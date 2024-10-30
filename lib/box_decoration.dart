@@ -57,6 +57,7 @@ class _HomeState extends State<Home> {
 
 class MyCard extends StatelessWidget {
   const MyCard({super.key});
+  static final Image image = Image.asset("assets/paisaje.jpg");
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +79,7 @@ class MyCard extends StatelessWidget {
               Text("Título", style: Theme.of(context).textTheme.titleLarge),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Image.asset("assets/paisaje.jpg"),
+                child: image,
               ),
             ],
           ),
