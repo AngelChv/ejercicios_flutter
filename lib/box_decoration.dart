@@ -15,6 +15,8 @@ class App extends StatelessWidget {
         cardTheme: CardTheme(
           margin: const EdgeInsets.all(30),
           color: Theme.of(context).colorScheme.inversePrimary,
+          elevation: 100,
+          shadowColor: Colors.black
         ),
         appBarTheme: AppBarTheme(
           color: Theme.of(context).colorScheme.primary
@@ -65,6 +67,11 @@ class MyCard extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondary,
+        boxShadow: const [
+          BoxShadow(
+            blurRadius: 10,
+          ),
+        ],
         borderRadius: const BorderRadius.all(Radius.circular(80)),
         border: Border.all(
           width: 4,
