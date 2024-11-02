@@ -38,8 +38,54 @@ class _Home extends State<Home> {
       ),
       body: ListView(
         children: [
-          Producto(),
-          Producto(),
+          Producto(
+            nombre: const Text("Producto 1"),
+            precio: const Text("6,7"),
+            image: Image.asset("assets/paisaje.jpg", width: 150,),
+          ),
+          Producto(
+            nombre: const Text("Producto 2"),
+            precio: const Text("10,3"),
+            image: Image.asset("assets/paisaje.jpg", width: 150,),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
+          ),
+          Producto(
+            nombre: const Text("Producto 1"),
+            precio: const Text("6,7"),
+            image: Image.asset("assets/paisaje.jpg", width: 250,),
+          ),
+          Producto(
+            nombre: const Text("Producto 2"),
+            precio: const Text("10,3"),
+            image: Image.asset("assets/paisaje.jpg", width: 350,),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
+          ),
+          Producto(
+            nombre: const Text("Producto 1"),
+            precio: const Text("6,7"),
+            image: Image.asset("assets/paisaje.jpg", width: 150,),
+          ),
+          Producto(
+            nombre: const Text("Producto 2"),
+            precio: const Text("10,3"),
+            image: Image.asset("assets/paisaje.jpg", width: 150,),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
+          ),
+          Producto(
+            nombre: const Text("Producto 1"),
+            precio: const Text("6,7"),
+            image: Image.asset("assets/paisaje.jpg", width: 250,),
+          ),
+          Producto(
+            nombre: const Text("Producto 2"),
+            precio: const Text("10,3"),
+            image: Image.asset("assets/paisaje.jpg", width: 350,),
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
+          ),
         ],
       ),
     );
@@ -47,25 +93,45 @@ class _Home extends State<Home> {
 }
 
 class Producto extends StatelessWidget {
-  const Producto({super.key});
+  final Text nombre;
+  final Text precio;
+  final Image image;
+  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry margin;
+  const Producto({super.key, required this.nombre, required this.precio,
+    required this.image, this.padding = const EdgeInsets.all(8),
+    this.margin = const EdgeInsets.all(8)});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      // todo pedir el margen y el padding en el constructor.
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(8),
+      margin: margin,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.inversePrimary,
+        border: Border.all(width: 1, color: Colors.grey),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 3,
+            offset: Offset(2, 2)
+          ),
+        ]
+      ),
       child: Row(
         children: [
-          Image.asset("assets/paisaje.jpg",
-            width: 100,
-          ), //todo
-          const Column(
-            children: [
-              Text("Nombre"), // todo pedir en el constructor
-              Text("Precio"),
-            ],
-          )
+          image,
+          Padding(
+            padding: padding,
+            child:
+              Column(
+                children: [
+                  nombre,
+                  precio,
+                ],
+              ),
+          ),
         ],
       ),
     );
