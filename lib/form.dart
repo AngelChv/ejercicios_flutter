@@ -37,6 +37,7 @@ class _MyFormState extends State<MyForm> {
 
   @override
   Widget build(BuildContext context) {
+    var emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
     return Form(
       key: _formKey,
       child: Column(
@@ -57,8 +58,8 @@ class _MyFormState extends State<MyForm> {
               hintText: "Correo",
             ),
             validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Introduzca su correo";
+              if (value == null || value.isEmpty || !emailRegex.hasMatch(value)) {
+                return "Introduzca un correo válido, ej: example@gmail.com";
               }
               return null;
             },
@@ -91,5 +92,4 @@ class _MyFormState extends State<MyForm> {
       ),
     );
   }
-
 }
