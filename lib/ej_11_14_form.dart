@@ -34,10 +34,25 @@ class MyForm extends StatefulWidget {
 
 class _MyFormState extends State<MyForm> {
   final _formKey = GlobalKey<FormState>(); // Importante!
+  final RegExp emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
+  final RegExp passwdRegex = RegExp(r"^\w{8}");
+  final passwdController = TextEditingController();
+
+  String? passwdValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Introduzca su contraseña";
+    }
+    if (!passwdRegex.hasMatch(value)) {
+      return "La contraseña debe de tener al menos 8 caracteres.";
+    }
+    if (value == passwdController.text) {
+      return "Las contraseñas no coinciden";
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final RegExp emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
     return Form(
       key: _formKey,
       child: Column(
@@ -71,12 +86,15 @@ class _MyFormState extends State<MyForm> {
             decoration: const InputDecoration(
               hintText: "Contraseña",
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Introduzca su contraseña";
-              }
-              return null;
-            },
+            validator: (value) => passwdValidator(value),
+          ),
+          TextFormField(
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+            decoration: const InputDecoration(
+              hintText: "Repetir contraseña",
+            ),
           ),
           ElevatedButton(
             onPressed: () {

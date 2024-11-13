@@ -21,7 +21,17 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-  late Color _color;
+  late Color _color = Colors.grey;
+
+  void _changeColor() {
+    Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const ColorPage()))
+        .then((value) {
+      setState(() {
+        _color = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +42,7 @@ class _Home extends State<Home> {
           color: _color,
           child: IconButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ColorPage())).then((value) {
-                _color = value;
-              });
+              _changeColor();
             },
             icon: const Icon(
               Icons.edit,
@@ -56,15 +61,20 @@ class ColorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          ElevatedButton(
-            onPressed: () {
-
-            },
-            child: const Text("Rojo"),
-          )
-        ],
+      body: Center(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, Colors.red),
+              child: const Text("Rojo"),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, Colors.blue),
+              child: const Text("Azul"),
+            ),
+          ],
+        ),
       ),
     );
   }
