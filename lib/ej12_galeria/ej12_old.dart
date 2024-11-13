@@ -32,9 +32,9 @@ class _GaleriaState extends State<Galeria> {
       ),
       body: GridView.count(
         crossAxisCount: 5,
-        padding: const EdgeInsets.all(16),
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
+        padding: const EdgeInsets.all(32),
+        mainAxisSpacing: 32,
+        crossAxisSpacing: 32,
         children: const [
           Imagen(path: "assets/paisaje.jpg"),
           Imagen(path: "assets/paisaje.jpg"),
@@ -71,11 +71,11 @@ class Imagen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        image: const DecorationImage(
-          image: AssetImage("assets/paisaje.jpg"),
-          fit: BoxFit.cover,
-        )
+          borderRadius: BorderRadius.circular(16),
+          image: const DecorationImage(
+            image: AssetImage("assets/paisaje.jpg"),
+            fit: BoxFit.cover,
+          )
       ),
     );
   }
