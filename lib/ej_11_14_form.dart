@@ -37,7 +37,7 @@ class _MyFormState extends State<MyForm> {
 
   @override
   Widget build(BuildContext context) {
-    var emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
+    final RegExp emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
     return Form(
       key: _formKey,
       child: Column(
