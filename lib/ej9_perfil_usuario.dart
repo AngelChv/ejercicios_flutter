@@ -39,12 +39,12 @@ class _Home extends State<Home> {
           ),
           const Positioned(
             top: 16,
-            right: 16,
+            left: 16,
             child: User(),
           ),
           const Positioned(
             top: 16,
-            left: 16,
+            right: 16,
             child: EditButton(),
           ),
         ],
@@ -81,7 +81,7 @@ class EditButton extends StatelessWidget {
       hoverColor: Colors.green,
       onPressed: () => ("todo"),
       icon: const Icon(
-        color: Colors.black,
+        color: Colors.white,
         Icons.edit,
       ),
     );
