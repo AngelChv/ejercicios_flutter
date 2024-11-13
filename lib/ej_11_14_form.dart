@@ -34,12 +34,12 @@ class MyForm extends StatefulWidget {
 
 class _MyFormState extends State<MyForm> {
   final _formKey = GlobalKey<FormState>(); // Importante!
-  final RegExp emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
-  final RegExp passwdRegex = RegExp(r"^\w{8}");
+  static final RegExp emailRegex = RegExp(r"^[\w.-]+@[a-zA-Z\d-]+\.[a-zA-Z]{2,6}$");
+  static final RegExp passwdRegex = RegExp(r"^\w{8}");
   final passwdController = TextEditingController();
 
   String? passwdValidator(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value!.isEmpty) {
       return "Introduzca su contraseña";
     }
     if (!passwdRegex.hasMatch(value)) {
@@ -62,7 +62,7 @@ class _MyFormState extends State<MyForm> {
               hintText: "Nombre",
             ),
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value!.isEmpty) {
                 return "Introduzca su nombre";
               }
               return null;
@@ -73,7 +73,7 @@ class _MyFormState extends State<MyForm> {
               hintText: "Correo",
             ),
             validator: (value) {
-              if (value == null || value.isEmpty || !emailRegex.hasMatch(value)) {
+              if (value!.isEmpty || !emailRegex.hasMatch(value)) {
                 return "Introduzca un correo válido, ej: example@gmail.com";
               }
               return null;
