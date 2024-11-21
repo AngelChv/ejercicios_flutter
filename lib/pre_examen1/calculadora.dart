@@ -47,7 +47,7 @@ class _Calculadora extends State<Calculadora> {
                 color: Colors.grey,
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  "${((_m * 100).truncate() / 100).toString()} m",
+                  "${_m.toStringAsFixed(2)} m",
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),

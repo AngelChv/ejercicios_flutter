@@ -23,6 +23,12 @@ class App extends StatelessWidget {
             fontSize: 30,
           ),
         ),
+        filledButtonTheme: const FilledButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll<Color>(Colors.red),
+            shape: WidgetStatePropertyAll(RoundedRectangleBorder())
+          )
+        )
       ),
       home: const Calculadora(),
     );
